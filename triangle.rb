@@ -14,7 +14,19 @@
 #   about_triangle_project_2.rb
 #
 def triangle(a, b, c)
-  # WRITE THIS CODE
+  vals = [a,b,c].sort
+
+  raise TriangleError if vals.any? {|i| i <= 0}
+  raise TriangleError if vals[0] + vals[1] <= vals[2]
+
+  case vals.uniq.count
+  when 1 then
+    return :equilateral
+  when 2 then
+    return :isosceles
+  else
+    return :scalene
+  end
 end
 
 # Error class used in part 2.  No need to change this code.
